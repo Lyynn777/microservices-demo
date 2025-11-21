@@ -1,0 +1,35 @@
+name: Microservices CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install pytest
+        run: pip install pytest httpx
+
+      - name: Build and start services
+        run: |
+          docker-compose up -d --build
+          sleep 10
+
+      - name: Run tests
+        run: |
+          cd orders
+          pytest
+
+      - name: Stop containers
+        if: always()
+        run: docker-compose down
