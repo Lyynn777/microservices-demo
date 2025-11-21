@@ -22,6 +22,10 @@ jobs:
           pip install pytest httpx
           cd orders
           pip install -r requirements.txt
+          cd ..
+
+      - name: Add orders to PYTHONPATH
+        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
       - name: Start services using Docker Compose v2
         run: |
