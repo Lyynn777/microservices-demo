@@ -17,8 +17,9 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies for Orders
+      - name: Install dependencies
         run: |
+          pip install pytest httpx
           cd orders
           pip install -r requirements.txt
 
