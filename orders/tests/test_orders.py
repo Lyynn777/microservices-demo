@@ -1,7 +1,8 @@
 import pytest
 from fastapi.testclient import TestClient
-from orders.app import app, orders_db
+from app import app, orders_db
 import asyncio
+
 
 class FakeUsersClient:
     async def get_user(self, user_id):
