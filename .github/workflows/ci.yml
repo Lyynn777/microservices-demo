@@ -17,10 +17,12 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install pytest
-        run: pip install pytest httpx
+      - name: Install dependencies for Orders
+        run: |
+          cd orders
+          pip install -r requirements.txt
 
-      - name: Build and start services
+      - name: Start services using Docker Compose v2
         run: |
           docker compose up -d --build
           sleep 10
