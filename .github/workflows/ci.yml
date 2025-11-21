@@ -22,7 +22,7 @@ jobs:
 
       - name: Build and start services
         run: |
-          docker-compose up -d --build
+          docker compose up -d --build
           sleep 10
 
       - name: Run tests
@@ -32,4 +32,4 @@ jobs:
 
       - name: Stop containers
         if: always()
-        run: docker-compose down
+        run: docker compose down
