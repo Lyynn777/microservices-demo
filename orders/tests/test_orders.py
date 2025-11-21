@@ -1,6 +1,6 @@
 import pytest
 from fastapi.testclient import TestClient
-from app import app, orders_db
+from orders.app import app, orders_db
 import asyncio
 
 
